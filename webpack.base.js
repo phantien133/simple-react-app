@@ -1,11 +1,12 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: "./src/index.jsx",
   output: {
-    path: path.join(__dirname, "/dist"),
-    filename: "index-bundle.js"
+    filename: 'nasa.bundle.js',
+    path: path.resolve(__dirname, 'dist')
   },
   module: {
     rules: [
@@ -38,8 +39,9 @@ module.exports = {
     extensions: ['*', '.js', '.jsx']
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: "./src/index.html"
-    })
+    }),
   ]
 };
