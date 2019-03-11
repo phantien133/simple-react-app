@@ -1,0 +1,75 @@
+{
+  "env": {
+      "browser": true,
+      "es6": true,
+      "node": true
+  },
+  "extends": [
+      "airbnb",
+      "plugin:react/recommended"
+  ],
+  "parserOptions": {
+      "ecmaFeatures": {
+          "experimentalObjectRestSpread": true,
+          "jsx": true
+      },
+      "sourceType": "module"
+  },
+  "plugins": [
+      "react",
+      "jsx-a11y",
+      "flowtype"
+  ],
+  "parser": "babel-eslint",
+  "rules": {
+      "react/button-has-type": 0,
+      "react/prop-types": 0,
+      "strict": 0,
+      "camelcase": 1,
+      "jsx-a11y/label-has-associated-control": 0,
+      "jsx-a11y/label-has-for": 0,
+      "quotes": [
+          2,
+          "single",
+          "avoid-escape"
+      ],
+      "indent": [
+          "error",
+          2
+      ],
+      "linebreak-style": [
+          "error",
+          "unix"
+      ],
+      "semi": [
+          1,
+          "always"
+      ],
+      "react/sort-comp": ["error", {
+          "order": [
+            "static-methods",
+            "lifecycle",
+            "everything-else",
+            "render",
+            "/^_.+$/"
+          ]
+      }],
+      "eol-last": 1,
+      "react/jsx-uses-vars": "error",
+      "flowtype/define-flow-type": 1,
+      "flowtype/use-flow-type": 1,
+      "react/destructuring-assignment": [0, "always"],
+      "react/no-array-index-key": [0]
+  },
+  "globals": {
+  },
+  "settings": {
+      "import/resolver": {
+          "alias": {
+              "map": [
+              ],
+              "extensions": [".ts", ".js", ".jsx", ".json"]
+          }
+      }
+  }
+}
