@@ -29,6 +29,7 @@
       "camelcase": 1,
       "jsx-a11y/label-has-associated-control": 0,
       "jsx-a11y/label-has-for": 0,
+      "import/prefer-default-export": "off",
       "quotes": [
           2,
           "single",
