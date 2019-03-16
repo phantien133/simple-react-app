@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './App';
+import NasaApp from './startup/NasaApp';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<NasaApp />, document.getElementById('root'));

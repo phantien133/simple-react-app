@@ -13,11 +13,11 @@ const persistConfig = {
   key: PERSIST_KEY,
   storage,
   stateReconciler: autoMergeLevel2,
-  whitelist: ['auth', 'company'],
+  whitelist: ['nasaImages'],
   transforms: [createTransform(
     inboundState => ({ ...inboundState, error: '' }),
     outboundState => ({ ...outboundState, error: '' }),
-    { whitelist: ['auth', 'company'] },
+    { whitelist: ['nasaImages'] },
   )],
 };
 
