@@ -6,9 +6,9 @@ export const deepMapKeys = (obj: Object, mapFunc: Function) => transform(obj, (r
   return setWith(r, mapFunc(k), value);
 });
 
-export const debounce = (func: Function, wait: Number, immediate: Boolean = false) => {
+export const debounce = (func: Function, wait: number, immediate: boolean = false) => {
   let timeout;
-  return (...args) => {
+  return (...args: Array<any>) => {
     const execFunc = () => func.bind(this)(...args);
     const later = () => {
       timeout = null;

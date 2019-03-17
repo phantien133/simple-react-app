@@ -4,7 +4,7 @@ import NasaApi from './NasaApi';
 import { ROUTES } from './contanst';
 
 class ItemsApi extends NasaApi {
-  search(keyword) {
+  search(keyword: String) {
     return this.client.get(ROUTES.searchPath, {
       params: { q: keyword },
     });

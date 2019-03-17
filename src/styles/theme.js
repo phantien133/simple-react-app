@@ -7,6 +7,7 @@ export const color = {
   darkGreyBlue: '#283c50',
   grayIcon: '#b4bec8',
   waterBlue: '#0f90bf',
+  errorRed: '#ff253a',
 };
 
 export const screen = {
