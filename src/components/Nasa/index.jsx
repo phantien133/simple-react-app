@@ -7,9 +7,8 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { rem } from 'polished';
 
 import { PageTitle } from '../common';
-import { flex, breakpoint } from '../../styles/mixins';
-import Item from './Item';
-
+import { flex } from '../../styles/mixins';
+import NasaRouter from './NasaRouter';
 
 const Container = styled.div``;
 
@@ -18,25 +17,11 @@ const Title = styled(PageTitle)`
   font-family: 'HelveticaNeue-Medium';
 `;
 
-const ListItem = styled.div`
-  padding: 30px 8px;
-  display: grid;
-  grid-template-columns: auto auto auto;
-  list-style-type: none;
-  margin: 0 100px;
-  ${breakpoint.xs`
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  `}
-`;
-
 const TitleHeader = styled.div`
   position: relative;
 `;
 
-const AddButton = styled.div`
+const RightButton = styled.div`
   ${flex.center};
   border-radius: 100%;
   background: ${props => props.theme.color.waterBlue};
@@ -51,28 +36,16 @@ const AddButton = styled.div`
   cursor: pointer;
 `;
 
-const List = () => (
+const Nasa = () => (
   <Container>
     <TitleHeader>
-      <Title>Nasa list</Title>
-      <AddButton>
+      <Title>NFQ Da Nang</Title>
+      <RightButton>
         <FontAwesomeIcon icon={faSearch} />
-      </AddButton>
+      </RightButton>
     </TitleHeader>
-    <ListItem>
-      <Item />
-      <Item />
-      <Item />
-      <Item />
-      <Item />
-      <Item />
-      <Item />
-      <Item />
-      <Item />
-    </ListItem>
+    <NasaRouter />
   </Container>
 );
 
-export default compose(
-
-)(List);
+export default Nasa;

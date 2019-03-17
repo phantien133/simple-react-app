@@ -16,7 +16,7 @@ import GlobalStyle from '../styles/globalStyle';
 import history from '../services/RoutingService';
 import LoadableComponent from '../components/LoadableComponent';
 
-const List = LoadableComponent(() => import('../components/List'));
+const Nasa = LoadableComponent(() => import('../components/Nasa'));
 
 const NasaApp = () => (
   <Provider store={store}>
@@ -34,7 +34,7 @@ const NasaApp = () => (
                 titleAttributes={{ itemprop: 'nasa', lang: 'en' }}
               />
               <Switch>
-                <Route path="/" component={List} exact />
+                <Route path="/" component={Nasa} />
                 <Route component={NoMatchComponent} />
               </Switch>
               <GlobalStyle />

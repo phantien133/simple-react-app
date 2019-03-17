@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import nasaImages from './nasaImagesReducers';
+import nasaItems from './nasaItemsReducer';
 
 export default combineReducers({
-  nasaImages,
+  nasaItems,
 });
