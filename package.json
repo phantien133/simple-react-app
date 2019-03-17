@@ -65,6 +65,7 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "axios": "^0.18.0",
     "clean-webpack-plugin": "^2.0.0",
+    "dotenv-webpack": "^1.7.0",
     "fbjs": "^1.0.0",
     "flow-bin": "^0.94.0",
     "history": "^4.9.0",

@@ -1,12 +1,12 @@
-import React, { PureComponent } from 'react';
+// @flow
+import React from 'react';
 import styled from 'styled-components';
-import { compose } from 'recompose';
 import Favorite from 'rmdi/lib/Favorite';
+import FavoriteBorder from 'rmdi/lib/FavoriteBorder';
 import ModeEdit from 'rmdi/lib/ModeEdit';
 import Delete from 'rmdi/lib/Delete';
 
-
-const IcoFavorite = styled(Favorite)`
+const styledFavoriteIcon = icon => styled(icon)`
   margin: 10px;
   width: 60px;
   height: 60px;
@@ -19,6 +19,10 @@ const IcoFavorite = styled(Favorite)`
     background: rgba(216, 216, 216, 0.24);
   }
 `;
+
+
+const IcoFavorite = styledFavoriteIcon(Favorite);
+const IcoUnFavorite = styledFavoriteIcon(FavoriteBorder);
 
 const IcoModeEdit = styled(ModeEdit)`
   margin: 10px;
@@ -52,21 +56,27 @@ const IcoDelete = styled(Delete)`
   }
 `;
 
-const PersistentSettings = () => (
+type Porps = {
+
+}
+
+const Settings = ({ maskAsFavorite, removeItem, item }: Porps) => (
   <React.Fragment>
     <IcoItems>
-      <IcoFavorite />
+      {item.favorite ? (
+        <IcoFavorite onClick={maskAsFavorite} />
+      ) : (
+        <IcoUnFavorite onClick={maskAsFavorite} />
+      )}
     </IcoItems>
     <IcoItems>
       <IcoModeEdit />
     </IcoItems>
     <IcoItems>
-      <IcoDelete />
+      <IcoDelete onClick={removeItem} />
     </IcoItems>
   </React.Fragment>
 );
 
 
-export default compose(
-
-)(PersistentSettings);
+export default Settings;

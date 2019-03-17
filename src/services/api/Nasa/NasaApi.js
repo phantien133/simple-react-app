@@ -5,7 +5,7 @@ export default class NasaApi extends RestApi {
   constructor(config: Object = {}) {
     super({
       ...config,
-      baseURL: 'https://images-api.nasa.gov',
+      baseURL: process.env.NASA_DOMAIN,
     });
   }
 }

@@ -1,12 +1,9 @@
 // @flow
 import React from 'react';
-import { compose } from 'recompose';
-import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Add from 'rmdi/lib/Add';
 
-import { addItem } from '../../../../actions/persistentItemsActioncs';
-import { type NasaItemType } from '../../../../models/NasaItem';
+import { type NasaItemType } from '../../../../../models/NasaItem';
 
 const IcoItems = styled.div`
   margin: 10px;
@@ -31,7 +28,7 @@ type Props = {
   item: NasaItemType,
 };
 
-const NewItemSettings = ({ add, item }: Props) => (
+const Settings = ({ add, item }: Props) => (
   <React.Fragment>
     <IcoItems>
       <IcoAdd onClick={() => add(item)} />
@@ -39,6 +36,4 @@ const NewItemSettings = ({ add, item }: Props) => (
   </React.Fragment>
 );
 
-export default compose(
-  connect(null, { add: addItem }),
-)(NewItemSettings);
+export default Settings;
