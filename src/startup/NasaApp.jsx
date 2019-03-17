@@ -14,7 +14,9 @@ import ErrorBoundary from '../components/ErrorBoundary';
 import LoadingSpinner from '../components/common/LoadingSpinner';
 import GlobalStyle from '../styles/globalStyle';
 import history from '../services/RoutingService';
-// import LoadableComponent from '../components/LoadableComponent';
+import LoadableComponent from '../components/LoadableComponent';
+
+const List = LoadableComponent(() => import('../components/List'));
 
 const NasaApp = () => (
   <Provider store={store}>
@@ -32,6 +34,7 @@ const NasaApp = () => (
                 titleAttributes={{ itemprop: 'nasa', lang: 'en' }}
               />
               <Switch>
+                <Route path="/" component={List} exact />
                 <Route component={NoMatchComponent} />
               </Switch>
               <GlobalStyle />

@@ -14,7 +14,7 @@ import HelveticaNeueUltraLightWoff from './fonts/HelveticaNeue-UltraLight.woff';
 
 export default css`
   @font-face {
-    font-family: 'HelveticaNeue Light';
+    font-family: 'HelveticaNeue-Light';
     font-style: normal;
     font-weight: normal;
     src: url(${HelveticaNeueLightTtf}) format('ttf'),
@@ -23,7 +23,7 @@ export default css`
   }
 
   @font-face {
-    font-family: 'HelveticaNeue Medium';
+    font-family: 'HelveticaNeue-Medium';
     font-style: normal;
     font-weight: normal;
     src: url(${HelveticaNeueMediumTtf}) format('ttf'),
@@ -32,7 +32,7 @@ export default css`
   }
 
   @font-face {
-    font-family: 'HelveticaNeue UltraLight';
+    font-family: 'HelveticaNeue-UltraLight';
     font-style: normal;
     font-weight: normal;
     src: url(${HelveticaNeueUltraLightTtf}) format('ttf'),
