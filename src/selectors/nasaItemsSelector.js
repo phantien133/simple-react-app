@@ -3,7 +3,9 @@ import {
   first,
   get,
   compact,
+  isEmpty,
 } from 'lodash';
+import { persistentItemsSelector } from './persistentItemsSelector';
 
 export const nasaItemsSelector = state => state.nasaItems;
 
@@ -40,4 +42,10 @@ export const responseDataSelector = createSelector(
       },
     };
   },
+);
+
+export const itemStateSelector = createSelector(
+  (state, props) => get(props, 'item.data.nasaId'),
+  persistentItemsSelector,
+  (nasaId, persistentItems) => ({ isPersist: !isEmpty(persistentItems.items[nasaId]) }),
 );

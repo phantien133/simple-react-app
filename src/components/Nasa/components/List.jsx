@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import { map } from 'lodash';
 import { breakpoint } from '../../../styles/mixins';
 import Item from './Item';
 import { type NasaItemType } from '../../../models/NasaItem';
@@ -25,7 +25,7 @@ type Props = {
 
 const List = ({ items = [], ...props }: Props) => (
   <ListItem {...props}>
-    {items && items.map(item => <Item item={item} key={item.nasaId} />)}
+    {items && map(items, item => <Item item={item} key={item.nasaId} />)}
   </ListItem>
 );
 
