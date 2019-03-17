@@ -8,7 +8,7 @@ import { truncate } from 'lodash';
 import { type NasaItemType } from '../../../../models/NasaItem';
 import { breakpoint } from '../../../../styles/mixins';
 import { convertTimeStampToDate } from '../../../../utils/dateTimeUtils';
-import ItemSettings from './ItemSettings';
+import ItemSettings from '../ItemSettings';
 
 const Container = styled.ul`
   margin: 8px;
@@ -57,10 +57,11 @@ const ItemsTime = styled.li`
 
 type Props = {
   item: NasaItemType,
+  addItem: Function,
 }
 
 const Items = (props: Props) => {
-  const { item = {} } = props;
+  const { item = {}, addItem } = props;
   const {
     data: {
       title,
@@ -71,7 +72,7 @@ const Items = (props: Props) => {
   } = item;
   return (
     <Container>
-      <ItemSettings item={item} />
+      <ItemSettings item={item} addItem={addItem} />
       <ItemsTitle>{title}</ItemsTitle>
       <ItemsTime>
         <IcoAccessTime />
