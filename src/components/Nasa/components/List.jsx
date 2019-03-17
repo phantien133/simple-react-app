@@ -1,6 +1,9 @@
+import React from 'react';
 import styled from 'styled-components';
 
 import { breakpoint } from '../../../styles/mixins';
+import Item from './Item';
+import { type NasaItemType } from '../../../models/NasaItem';
 
 const ListItem = styled.div`
   padding: 30px 8px;
@@ -16,4 +19,14 @@ const ListItem = styled.div`
   `}
 `;
 
-export default ListItem;
+type Props = {
+  items: Array<NasaItemType>,
+}
+
+const List = ({ items = [], ...props }: Props) => (
+  <ListItem {...props}>
+    {items && items.map(item => <Item item={item} key={item.nasaId} />)}
+  </ListItem>
+);
+
+export default List;

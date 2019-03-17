@@ -5,12 +5,10 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { rem } from 'polished';
-import { Route } from 'react-router-dom';
 
 import { PageTitle } from '../common';
 import { flex } from '../../styles/mixins';
-import PersistedList from './PersistedList';
-import Search from './Search';
+import NasaRouter from './NasaRouter';
 
 const Container = styled.div``;
 
@@ -38,39 +36,16 @@ const RightButton = styled.div`
   cursor: pointer;
 `;
 
-const List = () => (
+const Nasa = () => (
   <Container>
     <TitleHeader>
-      <Title>Nasa list</Title>
+      <Title>NFQ Da Nang</Title>
       <RightButton>
         <FontAwesomeIcon icon={faSearch} />
       </RightButton>
-      <Route path="/list" component={PersistedList} exact />
-      <Route path="/search" component={Search} exact />
     </TitleHeader>
+    <NasaRouter />
   </Container>
 );
 
-export default compose(
-
-)(List);
-
-{/* // @flow
-import React from 'react';
-import { Route } from 'react-router-dom';
-
-import { Presentation } from '../../containers/BusinessPlan/Presentation';
-import PlanList from '../../containers/BusinessPlan/PlanList';
-import NewBizPlan from '../../containers/BusinessPlan/New';
-import EditBizPlan from '../../containers/BusinessPlan/Edit';
-
-const BusinessPlanContainer = () => (
-  <React.Fragment>
-    <Route path="/business-plan/presentation" component={Presentation} exact />
-    <Route path="/business-plan/list" component={PlanList} exact />
-    <Route path="/business-plan/new" component={NewBizPlan} exact />
-    <Route path="/business-plan/edit/:bizPlanId" component={EditBizPlan} exact />
-  </React.Fragment>
-); */}
-
-export default BusinessPlanContainer;
+export default Nasa;

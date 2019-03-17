@@ -86,6 +86,7 @@
     "redux-actions": "^2.6.5",
     "redux-persist": "^5.10.0",
     "redux-saga": "^1.0.2",
+    "reselect": "^4.0.0",
     "rmdi": "^1.0.1",
     "styled-components": "^4.1.3"
   }

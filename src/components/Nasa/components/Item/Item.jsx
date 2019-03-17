@@ -3,10 +3,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { rem } from 'polished';
 import AccessTime from 'rmdi/lib/AccessTime';
+import { truncate } from 'lodash';
 
-import { type NasaItemType, canPreview } from '../../../models/NasaItem';
-import { breakpoint } from '../../../styles/mixins';
-import { convertTimeStampToDate } from '../../../utils/dateTimeUtils';
+import { type NasaItemType } from '../../../../models/NasaItem';
+import { breakpoint } from '../../../../styles/mixins';
+import { convertTimeStampToDate } from '../../../../utils/dateTimeUtils';
 import ItemSettings from './ItemSettings';
 
 const Container = styled.ul`
@@ -24,23 +25,25 @@ const ItemsTitle = styled.li`
   font-family: 'HelveticaNeue-UltraLight';
   padding: 20px 20px 10px;
   color: ${props => props.theme.color.darkGreyBlue};
-  font-size: ${rem('30px')};
+  font-size: ${rem('20px')};
   word-wrap: break-word;
 `;
 
 const ItemsDescription = styled.li`
   font-family: 'HelveticaNeue-Medium';
   padding: 20px 20px 10px;
-  overflow: hidden;
+  text-overflow: ellipsis;
   position: relative;
   max-height: 5em;
   text-align: justify;
+  margin-bottom: 10px;
 `;
 
 const IcoAccessTime = styled(AccessTime)`
   width: 20px;
   height: 20px;
   margin-right: 6px;
+  float: right;
 `;
 
 const ItemsTime = styled.li`
@@ -49,37 +52,35 @@ const ItemsTime = styled.li`
   font-size: ${rem('11px')};
   display: flex;
   align-items: center;
+  justify-content: flex-end;
 `;
 
 type Props = {
   item: NasaItemType,
-  children?: React.Node,
 }
 
 const Items = (props: Props) => {
-  const { children, item = {} } = props;
+  const { item = {} } = props;
   const {
-    href,
     data: {
       title,
+      description,
       secondarySreator,
       dateCreated,
-    } = {},
+    },
   } = item;
   return (
     <Container>
-      <ItemSettings background={canPreview(item) && href}>
-        {children}
-      </ItemSettings>
+      <ItemSettings item={item} />
       <ItemsTitle>{title}</ItemsTitle>
-      <ItemsDescription>
-        {secondarySreator}
-      </ItemsDescription>
       <ItemsTime>
         <IcoAccessTime />
         {' '}
         {convertTimeStampToDate(dateCreated)}
       </ItemsTime>
+      <ItemsDescription>
+        {truncate(description || secondarySreator, { length: 170 })}
+      </ItemsDescription>
     </Container>
   );
 };
