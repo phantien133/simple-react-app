@@ -31,16 +31,7 @@ export default handleActions({
       },
     };
   },
-  [removeItem]: () => (state, action) => {
-    const { payload: { item } } = action;
-    const { items } = state;
-    const nasaId = nasaIdSelector(item);
-    return {
-      ...state,
-      items: omit(items, nasaId),
-    };
-  },
-  [editItem]: () => (state, action) => {
+  [editItem]: (state, action) => {
     const { payload: { item } } = action;
     const { items } = state;
     const nasaId = nasaIdSelector(item);
@@ -48,8 +39,17 @@ export default handleActions({
       ...state,
       items: {
         ...items,
-        [nasaId]: merge({}, items[nasaId] || {}, items, { isPersist: true }),
+        [nasaId]: merge({}, items[nasaId] || {}, item, { isPersist: true }),
       },
+    };
+  },
+  [removeItem]: (state, action) => {
+    const { payload: { item } } = action;
+    const { items } = state;
+    const nasaId = nasaIdSelector(item);
+    return {
+      ...state,
+      items: omit(items, nasaId),
     };
   },
 }, initialState);
