@@ -2,16 +2,16 @@
 import { handleActions } from 'redux-actions';
 
 import {
-  updateNasaImages,
-} from '../actions/nasaImagesActions';
+  updateNasaItems,
+} from '../actions/nasaItemsActions';
 
 export const initialState = {
-  nasaImages: [],
-  page: [],
+  items: [],
+  metadata: { totalHits: 0 },
 };
 
 export default handleActions({
-  [updateNasaImages]: (state, action) => ({
+  [updateNasaItems]: (state, action) => ({
     ...state, ...action.payload,
   }),
 }, initialState);

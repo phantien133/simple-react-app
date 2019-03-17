@@ -1,9 +1,10 @@
 // @flow
 import React, { Component, Fragment } from 'react';
-import type { Node } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { compose, defaultProps } from 'recompose';
 import { rem } from 'polished';
+
+import type { Node } from 'react';
 
 import { flex } from '../styles/mixins';
 import { ImgWrong } from '../styles/images';

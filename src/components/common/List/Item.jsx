@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { rem } from 'polished';
 import AccessTime from 'rmdi/lib/AccessTime';
 import Favorite from 'rmdi/lib/Favorite';
@@ -10,14 +10,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faImage } from '@fortawesome/free-solid-svg-icons';
 import { compose, withStateHandlers } from 'recompose';
 
-import ModalDelete from './ModalDelete';
-import { breakpoint } from '../../styles/mixins';
+import { type NasaItemType } from '../../../models/NasaItem';
+
+import { breakpoint } from '../../../styles/mixins';
 
 const Container = styled.ul`
   margin: 8px;
   background: ${props => props.theme.color.white};
   box-shadow: 0 1px 2px 0 rgba(40, 60, 80, 0.24), 0 -1px 2px 0 rgba(40, 60, 80, 0.12);
-  min-width: 300px;
+  min-width: 250px;
   ${breakpoint.xs`
     flex: 1;
     width: 30%;
@@ -29,21 +30,22 @@ const ItemsOption = styled.li`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0 20px;
   height: 190px;
   position: relative;
-  .ItemSeting {
+  .Settings {
       z-index: 9;
       opacity: 0.1;
     }
   &:hover {
-    .ItemSeting {
+    .Settings {
       z-index: 9;
       opacity: 9;
     }
   }
 `;
 
-const ItemSeting = styled.div`
+const Settings = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -58,10 +60,21 @@ const ItemSeting = styled.div`
   transition: all 0.4s;
 `;
 
-const ItemsName = styled.li`
-  font-family: 'HelveticaNeue-Medium';
+const ItemsTitle = styled.li`
+  font-family: 'HelveticaNeue-UltraLight';
   padding: 20px 20px 10px;
   color: ${props => props.theme.color.darkGreyBlue};
+  font-size: ${rem('30px')};
+  word-wrap: break-word;
+`;
+
+const ItemsDescription = styled.li`
+  font-family: 'HelveticaNeue-Medium';
+  padding: 20px 20px 10px;
+  overflow: hidden;
+  position: relative;
+  max-height: 5em;
+  text-align: justify;
 `;
 
 const IcoAccessTime = styled(AccessTime)`
@@ -85,7 +98,7 @@ const IconFa = styled(FontAwesomeIcon)`
 `;
 
 const IcoFavorite = styled(Favorite)`
-  margin: 15px;
+  margin: 10px;
   width: 60px;
   height: 60px;
   cursor: pointer;
@@ -99,7 +112,7 @@ const IcoFavorite = styled(Favorite)`
 `;
 
 const IcoModeEdit = styled(ModeEdit)`
-  margin: 15px;
+  margin: 10px;
   width: 60px;
   height: 60px;
   cursor: pointer;
@@ -134,13 +147,23 @@ type Props = {
   openDeleteModal: Function,
   closeDeleteModal: Function,
   isOpenDeleteModal: boolean,
+  item: NasaItemType,
 }
 
-const Items = ({ isOpenDeleteModal, closeDeleteModal, openDeleteModal }: Props) => (
+const Items = ({
+  isOpenDeleteModal, closeDeleteModal, openDeleteModal,
+  item: {
+    href,
+    data: {
+      title,
+      secondarySreator,
+    } = {},
+  } = {},
+}: Props) => (
   <Container>
     <ItemsOption>
       <IconFa icon={faImage} />
-      <ItemSeting className="ItemSeting">
+      <Settings className="Settings">
         <IcoItems>
           <IcoFavorite />
         </IcoItems>
@@ -150,18 +173,17 @@ const Items = ({ isOpenDeleteModal, closeDeleteModal, openDeleteModal }: Props) 
         <IcoItems onClick={() => openDeleteModal()}>
           <IcoDelete />
         </IcoItems>
-      </ItemSeting>
+      </Settings>
     </ItemsOption>
-    <ItemsName>title</ItemsName>
+    <ItemsTitle>{title}</ItemsTitle>
+    <ItemsDescription>
+      {secondarySreator}
+    </ItemsDescription>
     <ItemsTime>
       <IcoAccessTime />
       {' '}
       created：16 hour ago
     </ItemsTime>
-    <ModalDelete
-      isOpen={isOpenDeleteModal}
-      close={() => closeDeleteModal()}
-    />
   </Container>
 );
 

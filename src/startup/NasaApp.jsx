@@ -16,7 +16,7 @@ import GlobalStyle from '../styles/globalStyle';
 import history from '../services/RoutingService';
 import LoadableComponent from '../components/LoadableComponent';
 
-const List = LoadableComponent(() => import('../components/List'));
+const List = LoadableComponent(() => import('../components/common/List/List'));
 
 const NasaApp = () => (
   <Provider store={store}>

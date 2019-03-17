@@ -47,6 +47,7 @@
           1,
           "always"
       ],
+      "react/require-default-props": "off",
       "react/sort-comp": ["error", {
           "order": [
             "static-methods",
