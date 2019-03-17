@@ -60,6 +60,9 @@
   },
   "dependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.15",
+    "@fortawesome/free-solid-svg-icons": "^5.7.2",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "clean-webpack-plugin": "^2.0.0",
     "fbjs": "^1.0.0",
     "flow-bin": "^0.94.0",
@@ -73,6 +76,7 @@
     "react-helmet": "^5.2.0",
     "react-i18next": "^8.3.8",
     "react-loadable": "^5.5.0",
+    "react-modal": "^3.8.1",
     "react-redux": "^6.0.1",
     "react-router-dom": "^4.4.0",
     "recompose": "^0.30.0",
@@ -80,6 +84,7 @@
     "redux-actions": "^2.6.5",
     "redux-persist": "^5.10.0",
     "redux-saga": "^1.0.2",
+    "rmdi": "^1.0.1",
     "styled-components": "^4.1.3"
   }
 }

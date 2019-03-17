@@ -16,12 +16,6 @@ export const breakpoint = {
   lg: (...args) => css`
     @media (min-width: 1200px) { ${css(...args)} }
   `,
-  max1300: (...args) => css`
-    @media (max-width: 1370px) { ${css(...args)} }
-  `,
-  max1400: (...args) => css`
-    @media (max-width: 1400px) { ${css(...args)} }
-  `,
 };
 
 export const flex = {
@@ -56,23 +50,6 @@ export const position = {
     top: ${p => p.top}px;
     right: ${p => p.right}px;
     bottom: ${p => p.bottom}px;
-  `,
-};
-
-export const pos = {
-  relative: css`
-    position: relative;
-    left: ${p => p.left};
-    top: ${p => p.top};
-    right: ${p => p.right};
-    bottom: ${p => p.bottom};
-  `,
-  absolute: css`
-    position: absolute;
-    left: ${p => p.left};
-    top: ${p => p.top};
-    right: ${p => p.right};
-    bottom: ${p => p.bottom};
   `,
 };
 
