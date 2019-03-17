@@ -6,6 +6,9 @@ import FavoriteBorder from 'rmdi/lib/FavoriteBorder';
 import ModeEdit from 'rmdi/lib/ModeEdit';
 import Delete from 'rmdi/lib/Delete';
 
+import ModalEdit from '../../Item/ModalEdit';
+import { type NasaItemType } from '../../../../../models/NasaItem';
+
 const styledFavoriteIcon = icon => styled(icon)`
   margin: 10px;
   width: 60px;
@@ -57,26 +60,40 @@ const IcoDelete = styled(Delete)`
 `;
 
 type Porps = {
-
+  maskAsFavorite: Function,
+  removeItem: Function,
+  closeModalEdit: Function,
+  openModalEdit: Function,
+  save: Function,
+  item: NasaItemType,
+  isOnEdit: boolean,
+  readOnly: boolean,
 }
 
-const Settings = ({ maskAsFavorite, removeItem, item }: Porps) => (
+const Settings = ({
+  maskAsFavorite, removeItem, item, save,
+  openModalEdit, closeModalEdit, isOnEdit, readOnly,
+}: Porps) => (
   <React.Fragment>
-    <IcoItems>
-      {item.favorite ? (
-        <IcoFavorite onClick={maskAsFavorite} />
-      ) : (
-        <IcoUnFavorite onClick={maskAsFavorite} />
-      )}
-    </IcoItems>
-    <IcoItems>
-      <IcoModeEdit />
-    </IcoItems>
+    {!readOnly && (
+      <IcoItems>
+        {item.favorite ? (
+          <IcoFavorite onClick={maskAsFavorite} />
+        ) : (
+          <IcoUnFavorite onClick={maskAsFavorite} />
+        )}
+      </IcoItems>
+    )}
+    {!readOnly && (
+      <IcoItems>
+        <IcoModeEdit onClick={openModalEdit} />
+        <ModalEdit close={closeModalEdit} isOpen={isOnEdit} item={item} save={save} />
+      </IcoItems>
+    )}
     <IcoItems>
       <IcoDelete onClick={removeItem} />
     </IcoItems>
   </React.Fragment>
 );
-
 
 export default Settings;

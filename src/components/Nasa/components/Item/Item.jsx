@@ -58,21 +58,21 @@ const ItemsTime = styled.li`
 type Props = {
   item: NasaItemType,
   addItem: Function,
+  readOnly: boolean,
 }
 
 const Items = (props: Props) => {
-  const { item = {}, addItem } = props;
+  const { item = {}, addItem, readOnly } = props;
   const {
     data: {
       title,
       description,
-      secondarySreator,
       dateCreated,
     },
   } = item;
   return (
     <Container>
-      <ItemSettings item={item} addItem={addItem} />
+      <ItemSettings item={item} addItem={addItem} readOnly={readOnly} />
       <ItemsTitle>{title}</ItemsTitle>
       <ItemsTime>
         <IcoAccessTime />
@@ -80,7 +80,7 @@ const Items = (props: Props) => {
         {convertTimeStampToDate(dateCreated)}
       </ItemsTime>
       <ItemsDescription>
-        {truncate(description || secondarySreator, { length: 170 })}
+        {truncate(description, { length: 170 })}
       </ItemsDescription>
     </Container>
   );

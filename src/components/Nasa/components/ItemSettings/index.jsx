@@ -49,10 +49,12 @@ export const Settings = styled.div`
 
 type Props = {
   item: NasaItemType,
+  readOnly: boolean,
 };
 
 const ItemSettings = ({
   item,
+  readOnly,
 }: Props) => (
   <Container>
     <PreviewMedia src={
@@ -62,9 +64,9 @@ const ItemSettings = ({
     <Settings className="Settings">
       {
         item.isPersist ? (
-          <PersistentSettings item={
-            item
-          }
+          <PersistentSettings
+            item={item}
+            readOnly={readOnly}
           />
         ) : <NewItemSettings item={item} />
       }

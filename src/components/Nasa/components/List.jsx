@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { map } from 'lodash';
+import { map, isEmpty } from 'lodash';
 import { breakpoint } from '../../../styles/mixins';
 import Item from './Item';
 import { type NasaItemType } from '../../../models/NasaItem';
+import LoadingSpinner from '../../common/LoadingSpinner';
 
 const ListItem = styled.div`
   padding: 30px 8px;
@@ -21,11 +22,17 @@ const ListItem = styled.div`
 
 type Props = {
   items: Array<NasaItemType>,
+  loading: boolean,
+  readOnly: boolean,
 }
 
-const List = ({ items = [], ...props }: Props) => (
+const List = ({
+  items = [], loading = false, readOnly, ...props
+}: Props) => (
   <ListItem {...props}>
-    {items && map(items, item => <Item item={item} key={item.nasaId} />)}
+    {loading ? <LoadingSpinner /> : (
+      (isEmpty(items) && 'Empty list') || map(items || [], item => <Item item={item} key={item.nasaId} readOnly={readOnly} />)
+    )}
   </ListItem>
 );
 
