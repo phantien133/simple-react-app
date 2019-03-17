@@ -6,8 +6,8 @@ import Search from './Search';
 
 const NasaRouter = () => (
   <React.Fragment>
+    <Route path="/" component={PersistedList} exact />
     <Route path="/search" component={Search} exact />
-    <Route path="/list" component={PersistedList} exact />
   </React.Fragment>
 );
 
