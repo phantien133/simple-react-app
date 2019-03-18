@@ -37,7 +37,7 @@ type Props = {
 const PersistedList = ({ items, search }: Props) => (
   <React.Fragment>
     <InputContainer>
-      <SearchField placeholder="search" onChange={search} />
+      <SearchField placeholder="Search from saved list" onChange={search} />
       <Label>
         <FontAwesomeIcon icon={faSearch} />
       </Label>

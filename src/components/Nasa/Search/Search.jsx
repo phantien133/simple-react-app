@@ -38,7 +38,7 @@ type Props = {
 const Search = ({ items, search, loading }: Props) => (
   <React.Fragment>
     <InputContainer>
-      <SearchField placeholder="search from Nasa API" onChange={search} />
+      <SearchField placeholder="Search from Nasa" onChange={search} />
       <Label>
         <FontAwesomeIcon icon={faSearch} />
       </Label>
