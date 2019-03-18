@@ -2,15 +2,14 @@ import {
   compose, withState, mapProps, withHandlers,
 } from 'recompose';
 import { connect } from 'react-redux';
-import { isEmpty, filter } from 'lodash';
+import { isEmpty, filter, debounce } from 'lodash';
 
 import PersistedList from './PersistedList';
 import { persistentItemsSelector } from '../../../selectors/persistentItemsSelector';
-import { debounce } from '../../../utils/commonUltils';
 
 const debounceSearch = debounce((setKeyword, value) => {
   setKeyword(value);
-}, 500);
+}, 300);
 
 export default compose(
   connect(persistentItemsSelector),

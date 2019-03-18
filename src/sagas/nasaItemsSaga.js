@@ -14,16 +14,12 @@ import {
 import { responseDataSelector } from '../selectors/nasaItemsSelector';
 
 export function* fetchNasaItemsSaga(actions) {
-  try {
-    const { payload: { keyword } } = actions;
-    if (isEmpty(keyword)) {
-      yield put(cleanNasaItems());
-    } else {
-      const response = yield call([itemsApi, itemsApi.search], keyword);
-      yield put(updateNasaItems(responseDataSelector(response.data)));
-    }
-  } catch (e) {
-    // do nothing at the moment
+  const { payload: { keyword } } = actions;
+  if (isEmpty(keyword)) {
+    yield put(cleanNasaItems());
+  } else {
+    const response = yield call([itemsApi, itemsApi.search], keyword);
+    yield put(updateNasaItems(responseDataSelector(response.data)));
   }
 }
 

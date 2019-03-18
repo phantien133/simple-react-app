@@ -9,12 +9,12 @@ import {
 export const initialState = {
   items: [],
   metadata: { totalHits: 0 },
-  updatedAt: new Date(),
+  updatedAt: null,
 };
 
 export default handleActions({
   [updateNasaItems]: (state, action) => ({
-    ...state, ...action.payload, updatedAt: new Date().getTime(),
+    ...state, ...action.payload, updatedAt: new Date(),
   }),
-  [cleanNasaItems]: () => initialState,
+  [cleanNasaItems]: () => ({ ...initialState, updatedAt: new Date() }),
 }, initialState);

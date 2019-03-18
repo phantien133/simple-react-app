@@ -31,7 +31,8 @@ const List = ({
 }: Props) => (
   <ListItem {...props}>
     {loading ? <LoadingSpinner /> : (
-      (isEmpty(items) && 'Empty list') || map(items || [], item => <Item item={item} key={item.nasaId} readOnly={readOnly} />)
+      (isEmpty(items) && 'Empty list')
+        || map(items || [], item => <Item item={item} key={item.data.nasaId} readOnly={readOnly} />)
     )}
   </ListItem>
 );

@@ -20,7 +20,7 @@ const itemSelector = createSelector(
   previewLinkSelector,
   ({ data }) => data,
   (link, data) => {
-    const { href } = link;
+    const { href } = link || {};
 
     if (!href) return null;
 

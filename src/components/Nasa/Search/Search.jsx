@@ -35,10 +35,12 @@ type Props = {
   loading: boolean,
 }
 
-const Search = ({ items, search, loading }: Props) => (
+const Search = ({
+  items, search, loading, onKeyUp,
+}: Props) => (
   <React.Fragment>
     <InputContainer>
-      <SearchField placeholder="Search from Nasa" onChange={search} />
+      <SearchField placeholder="Search from Nasa" onChange={search} onKeyUp={onKeyUp} />
       <Label>
         <FontAwesomeIcon icon={faSearch} />
       </Label>

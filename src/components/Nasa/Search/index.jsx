@@ -10,20 +10,27 @@ import { debounce } from '../../../utils/commonUltils';
 
 const debounceSearch = debounce((search, setSearchAt, value) => {
   search(value);
-  setSearchAt(new Date());
-}, 500);
+}, 1000);
 
 export default compose(
   withState('searchAt', 'setSearchAt', null),
   connect(nasaItemsSelector, { search: fetchNasaItems }),
   withHandlers({
-    search: ({ search, setSearchAt }) => (event) => {
-      const { currentTarget } = event;
-      return debounceSearch(search, setSearchAt, currentTarget.value);
+    search: ({ search, setSearchAt, setKeyword }) => (event) => {
+      const { target } = event;
+      setSearchAt(new Date().getTime());
+      debounceSearch(search, setSearchAt, target.value);
+    },
+    onKeyUp: ({ search, setSearchAt }) => (event) => {
+      const { keyCode, target } = event;
+      if (keyCode === 13) {
+        setSearchAt(new Date().getTime());
+        debounceSearch(search, setSearchAt, target.value);
+      }
     },
   }),
   mapProps(props => ({
     ...props,
-    loading: props.searchAt > props.updatedAt,
+    loading: props.updatedAt && props.searchAt > props.updatedAt,
   })),
 )(Search);
