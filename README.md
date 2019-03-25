@@ -1,6 +1,7 @@
-It is very simple project, that why i am using the basic techniques but still availabitity to make scale up
+It is very simple project, that why I am using the basic techniques but still availabitity to make scale up.
+- Without any boilerplate.
 ## Preview
-http://nfq-phanqtien.surge.sh/
+http://without-boilerplate.piiq-tee.surge.sh/
 
 ## Development server
 - Create a .env file in the root directory of your project like `.env.sample`
